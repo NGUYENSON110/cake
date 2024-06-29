@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Container, Box, Paper } from "@mui/material";
+import ScreenOne from "./screen/ScreenOne.js";
+import ScreenTwo from "./screen/ScreenTwo.js";
+import ScreenThree from "./screen/ScreenThree.js";
+import BottomNav from "./screen/BottomNav.js";
 
 function App() {
+  const [value, setValue] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Box mb={8}>
+        {value === 0 && <ScreenOne />}
+        {value === 1 && <ScreenTwo />}
+        {value === 2 && <ScreenThree />}
+      </Box>
+      <BottomNav
+        value={value}
+        onChange={(event, newValue) => setValue(newValue)}
+      />
+    </Container>
   );
 }
 
